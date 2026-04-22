@@ -27,3 +27,27 @@
 git config --global user.name "Camila Magne Hinojosa"
 git config --global user.email "tu@correo.com"
 git config --global core.autocrlf true
+
+---
+
+## Dia 2: Estados de Git y Buenas Practicas de Commits
+*Fecha: 22 de abril de 2026*
+
+### Estados de Git
+Git gestiona los archivos a traves de tres estados principales:
+1. **Directorio de Trabajo (Modified):** Es la carpeta local donde se escribe codigo que Git aun no tiene asegurado. Los archivos pueden estar como *Untracked* (nuevos) o *Modified* (cambiados).
+2. **Stage Area (Staged):** Es el area de preparacion donde se seleccionan los cambios que se incluiran en el siguiente punto de guardado.
+3. **Repositorio Local (Committed):** Es el historial donde los cambios ya tienen un ID (hash) y estan confirmados.
+
+### Comandos de Gestion de Estados
+* `git add <archivo>`: Agrega un archivo especifico al stage area.
+* `git add .`: Agrega todos los archivos observados al stage area.
+* `git restore <archivo>`: Revierte un archivo modificado a su estado original (borra cambios fisicos).
+* `git restore --staged <archivo>`: Saca un archivo del stage area para volver al estado anterior.
+* `git reset --soft HEAD~1`: Deshace el ultimo commit realizado.
+
+### Buenas Practicas de Commits
+* **Commits Atomicos:** Realizar confirmaciones pequeñas que representen un unico cambio logico y completo.
+* **Mensajes Imperativos:** Los mensajes deben describir que hace el commit usando verbos como Add, Change, Fix o Remove.
+* **Formato Semantico:** Se debe usar el formato `<tipo>: <descripcion>` (ej. `feat`, `fix`, `docs`).
+* **Restricciones:** No usar punto final ni puntos suspensivos, y mantener el titulo bajo los 50 caracteres para mayor concision.
