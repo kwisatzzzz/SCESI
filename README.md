@@ -51,3 +51,24 @@ Git gestiona los archivos a traves de tres estados principales:
 * **Mensajes Imperativos:** Los mensajes deben describir que hace el commit usando verbos como Add, Change, Fix o Remove.
 * **Formato Semantico:** Se debe usar el formato `<tipo>: <descripcion>` (ej. `feat`, `fix`, `docs`).
 * **Restricciones:** No usar punto final ni puntos suspensivos, y mantener el titulo bajo los 50 caracteres para mayor concision.
+
+---
+
+## Dia 3: GitHub y Conexion Segura (SSH)
+*Fecha: 23 de abril de 2026*
+
+### Git vs GitHub
+Es importante entender que no son lo mismo:
+* **Git:** Es el sistema de control de versiones que gestiona los archivos localmente en la computadora.
+* **GitHub:** Es una plataforma en la nube que permite alojar repositorios de Git para colaborar y compartir el codigo.
+
+### Metodos de Conexion: SSH vs HTTPS
+* **HTTPS:** Es el metodo por defecto, pero requiere autenticacion constante mediante tokens o contraseñas, lo cual puede ser tedioso.
+* **SSH:** Permite una comunicacion segura entre la computadora y GitHub mediante una llave (SSH Key). Una vez configurada, no solicita credenciales en cada operacion.
+
+### Comandos de Sincronizacion Remota
+* `git remote add origin <URL>`: Vincula el repositorio local con un servidor remoto.
+* `git push origin <rama>`: Envia los commits locales al repositorio en la nube.
+* `git pull origin <rama>`: Descarga y fusiona los cambios del servidor a la computadora local.
+* `git clone <URL>`: Crea una copia local de un repositorio que ya existe en GitHub.
+* `git remote set-url origin <URL>`: Permite cambiar la direccion del repositorio remoto (ej. pasar de HTTPS a SSH).
