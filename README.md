@@ -93,3 +93,23 @@ Ademas, Git maneja una jerarquia de configuracion: **System > Global > Local**. 
 
 ---
 
+## Dia 5: Ramas y Gitflow Basico
+
+### Ramas (Branches) en Git
+Las ramas son una bifurcacion del estado del codigo que crea un nuevo camino evolutivo en paralelo.
+* `git branch`: Lista las ramas disponibles y muestra el posicionamiento actual del HEAD.
+* `git branch <rama>`: Crea una nueva rama a partir de la rama posicionada.
+* `git branch -D <rama>`: Borra la rama especificada.
+
+### Git Checkout vs Git Switch
+Originalmente, `git checkout` estaba sobrecargado, ya que servia para cambiar ramas, viajar a commits antiguos y restaurar archivos. Para evitar dejar el proyecto en *Detached HEAD* accidentalmente, se introdujo `git switch` en 2019, un comando especializado unicamente en la navegacion segura de ramas.
+
+### Gitflow Basico
+Es un flujo de trabajo que nos permite gestionar las ramas de manera ordenada mediante ciertas reglas.
+* **Ramas Principales:**
+  * `main`: Contiene el codigo oficial que se encuentra en produccion.
+  * `develop`: Rama de pre-produccion donde se integran y prueban las nuevas caracteristicas.
+* **Ramas de Apoyo:**
+  * `feature/*`: Para desarrollar una tarea especifica o nueva caracteristica. Nacen en `develop` y mueren en `develop`.
+  * `release/*`: Para preparar y pulir el lanzamiento de una nueva version (pruebas QA). Nacen en `develop` y mueren en `main` y `develop`.
+  * `hotfix/*`: Para arreglar parches o incendios de emergencia en produccion. Nacen en `main` y mueren en `main` y `develop`.
