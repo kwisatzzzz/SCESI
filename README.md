@@ -72,3 +72,24 @@ Es importante entender que no son lo mismo:
 * `git pull origin <rama>`: Descarga y fusiona los cambios del servidor a la computadora local.
 * `git clone <URL>`: Crea una copia local de un repositorio que ya existe en GitHub.
 * `git remote set-url origin <URL>`: Permite cambiar la direccion del repositorio remoto (ej. pasar de HTTPS a SSH).
+---
+
+## Dia 4: Remotos, Multiples SSH y Git Checkout
+
+### Gestion de Remotos
+El comando `git remote` permite administrar las conexiones con repositorios externos, indicando a Git local donde enviar o traer informacion.
+* `git remote -v`: Permite ver las URLs exactas a las que apunta el repositorio.
+* `git remote add <apodo> "url"`: Vincula el repositorio local con uno en la nube.
+* `git remote set-url <apodo> "url"`: Cambia la direccion a la que apunta el repositorio.
+
+### Multiples SSH y Jerarquia de Configuracion
+Para manejar multiples cuentas en GitHub, es util tener mas de una llave SSH para que estas no choquen. Se debe crear un archivo `config` para asignar un Host distinto a cada llave, definiendo el `HostName`, `User` y la ruta exacta en `IdentityFile`. 
+Ademas, Git maneja una jerarquia de configuracion: **System > Global > Local**. Las configuraciones locales se imponen a las globales y se aplican usando `git config` sin la bandera `--global`.
+
+### Git Checkout y Detached HEAD
+`git checkout` es un comando que permite desplazar el HEAD hacia un punto especifico de la historia o a una rama distinta para inspeccionar, restaurar o experimentar.
+* **Detached HEAD:** Ocurre cuando el HEAD apunta directamente a un commit (que es fijo) en lugar de a una rama. En este estado, eres un espectador en el pasado. 
+* Si realizas cambios sin crear una nueva rama y vuelves al presente, tus cambios desapareceran en el vacio. Como buena practica, limpia tu directorio de trabajo antes de hacer checkout al pasado.
+
+---
+
