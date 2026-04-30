@@ -113,3 +113,38 @@ Es un flujo de trabajo que nos permite gestionar las ramas de manera ordenada me
   * `feature/*`: Para desarrollar una tarea especifica o nueva caracteristica. Nacen en `develop` y mueren en `develop`.
   * `release/*`: Para preparar y pulir el lanzamiento de una nueva version (pruebas QA). Nacen en `develop` y mueren en `main` y `develop`.
   * `hotfix/*`: Para arreglar parches o incendios de emergencia en produccion. Nacen en `main` y mueren en `main` y `develop`.
+
+  ---
+
+## Dia 6: Fusion de Ramas y Flujo Colaborativo
+
+### Comandos de Sincronizacion y Fusion
+* `git fetch`: Verifica de forma segura si existen nuevos cambios en el repositorio remoto sin modificar tus archivos locales.
+* `git pull origin <rama>`: Descarga e integra todos los cambios del repositorio remoto hacia tu rama local.
+* `git push origin <rama>`: Sube tus commits locales al repositorio remoto. 
+  * *Nota:* La primera vez que se sube una rama nueva, se debe usar la bandera `-u` (`git push -u origin <rama>`) para vincularla y evitar problemas de permisos.
+* `git merge <rama>`: Permite fusionar dos ramas en una sola, combinando sus commits. 
+  * **Flag `--no-ff` (No Fast-Forward):** Fuerza la creacion de un commit de fusion. Esto asegura que no se pierda el historial visual de la rama integrada, incluso si esta se elimina despues.
+
+### Flujo de Trabajo Colaborativo (Paso a Paso)
+Para trabajar en equipo de manera ordenada, previniendo la perdida de codigo:
+
+1. **Actualizar la base (develop):**
+   `git checkout develop`
+   `git fetch`
+   `git pull origin develop`
+2. **Crear rama propia e integrar novedades:**
+   `git checkout -b <tu_rama>`
+   `git merge develop` *(Solo si hubo cambios en develop)*
+3. **Trabajar y subir avances:**
+   *(Realizar cambios, git add y git commit)*
+   `git push -u origin <tu_rama>`
+4. **Integracion final:**
+   `git checkout develop`
+   `git fetch`
+   `git pull origin develop`
+   `git merge --no-ff <tu_rama>`
+5. **Resolucion y limpieza:**
+   *(Si hay conflictos: resolver manualmente, git add y git commit)*
+   `git branch -D <tu_rama>`
+   `git push origin develop`
