@@ -148,3 +148,43 @@ Para trabajar en equipo de manera ordenada, previniendo la perdida de codigo:
    *(Si hay conflictos: resolver manualmente, git add y git commit)*
    `git branch -D <tu_rama>`
    `git push origin develop`
+   ---
+
+## Dia 7: Pull Requests y Colaboracion Segura
+
+### Que es un Pull Request (PR)?
+Un Pull Request (informalmente PR) es la forma profesional de trabajar en equipo con Git y GitHub. Consiste en una solicitud creada en el repositorio remoto para que el resto del equipo revise los cambios propuestos antes de fusionarlos (merge) con el codigo base principal.
+
+### Por que utilizar PRs?
+El uso de Pull Requests es fundamental por motivos de seguridad y control de calidad:
+* **Prevencion de riesgos:** Evita que codigo inestable, con errores o malicioso se integre directamente al proyecto.
+* **Revision obligatoria:** Limita la integracion directa y fuerza al equipo a visualizar y analizar los cambios.
+* **Trabajo colaborativo:** Fomenta el debate, permite presentar opiniones o rechazar modificaciones, logrando un manejo grupal seguro.
+
+### Flujo de Trabajo (Con Pull Requests)
+Este flujo garantiza que la rama de trabajo este actualizada y libre de conflictos antes de solicitar la revision final en GitHub:
+
+1. **Actualizar la rama base (develop):**
+   `git checkout develop`
+   `git fetch`
+   `git pull origin develop`
+2. **Crear la rama propia e integrar novedades:**
+   `git checkout -b <tu_rama>`
+   `git merge develop` *(Solo si hubo cambios en develop)*
+3. **Trabajar y subir avances:**
+   *(Realizar cambios en el codigo, git add y git commit)*
+   `git push -u origin <tu_rama>` *(El -u solo es necesario la primera vez)*
+4. **Sincronizacion preventiva antes de crear el PR:**
+   `git checkout develop`
+   `git fetch`
+   `git checkout <tu_rama>`
+   `git merge develop` *(Traer cambios nuevos de develop a tu rama)*
+5. **Resolver conflictos y actualizar en la nube:**
+   *(Resolver manualmente si existen conflictos, git add y git commit)*
+   `git push origin <tu_rama>`
+6. **Apertura del PR:**
+   Dirigirse a la interfaz web de GitHub y crear el Pull Request para someter el codigo a revision.
+
+### Proteccion de Ramas y Colaboracion Externa
+* **Proteger el repositorio:** Para que los PRs cumplan su funcion, se deben configurar reglas en GitHub que limiten la colaboracion (por ejemplo, bloqueando el push directo a `develop` o `main` y exigiendo aprobacion previa).
+* **Colaboradores no invitados:** Desarrolladores externos pueden contribuir a un proyecto publico creando una bifurcacion (*Fork*) en su propia cuenta y enviando un Pull Request desde ahi hacia el repositorio original.
